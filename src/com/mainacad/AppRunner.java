@@ -16,7 +16,7 @@ public class AppRunner {
 
         Queue<ConnectionInfo> connections = ConnectionInfoService.generateConnectionQueue(5);
 
-        logger.info("My system generated " + connections.size() + "connections.");
+        logger.info(String.format("My system generated %d connections. %s", connections.size(), "It's cool!"));
 
         String connectionsAsText = ConnectionInfoService.getConnectionsAsText(connections);
         logger.info("\n" + connectionsAsText);
