@@ -32,19 +32,53 @@ public class ConnectionInfoService {
             connections.add(connectionInfo);
         }
 
-            return connections;
-        }
-
-        public static String getConnectionsAsText(Collection<ConnectionInfo> connections) {
-             String outText = "";
-             for (ConnectionInfo connectionInfo : connections) {
-                 outText += connectionInfo.toString() + "\n";
-             }
-             return outText;
-
-
-        }
+        return connections;
     }
+
+    public static String getConnectionsAsText(Collection<ConnectionInfo> connections) {
+        String outText = "";
+        for (ConnectionInfo connectionInfo : connections) {
+            outText += connectionInfo.toString() + "\n";
+        }
+        return outText;
+
+
+    }
+
+    public static Queue<ConnectionInfo> getConnectionsFromText(String text) {
+        Queue<ConnectionInfo> connections = new PriorityQueue<>();
+
+        String[] lines = text.split("\n");
+
+        for (String line : lines){
+            String[] words = line.split("");
+
+            User user = new User(Integer.valueOf(words[5]), words[3], words[4]);
+
+            ConnectionInfo connectionInfo = new ConnectionInfo(Integer.valueOf(words[1]),words[2],Long.valueOf(words[0]),user);
+
+            connections.add(connectionInfo);
+
+        }
+
+        return connections;
+
+
+    }
+    public static Queue<ConnectionInfo> filterConnectionsByTime(Collection<ConnectionInfo> allConnections, long from, long to){
+        Queue<ConnectionInfo> connections = new PriorityQueue<>();
+        for (ConnectionInfo connectionInfo: allConnections){
+            if (connectionInfo.getTime() >= from && connectionInfo.getTime() <= to) {
+                connections.add(connectionInfo);
+
+            }
+        }
+
+        return connections;
+            }
+
+}
+
 
 
 
