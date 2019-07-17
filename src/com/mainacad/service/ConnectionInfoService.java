@@ -1,6 +1,7 @@
 package com.mainacad.service;
 
 import com.mainacad.model.ConnectionInfo;
+import com.mainacad.model.Gender;
 import com.mainacad.model.User;
 import com.mainacad.util.Randomizer;
 
@@ -12,7 +13,7 @@ import java.util.concurrent.Callable;
 
 public class ConnectionInfoService {
 
-    public static Queue<ConnectionInfo> generateConnectionQueue(int amount) {
+    public static Queue<ConnectionInfo> generateConnectionInfoQueue(int amount) {
         Queue<ConnectionInfo> connections = new PriorityQueue<>();
 
         for (int i = 0; i < amount; i++) {
@@ -26,7 +27,7 @@ public class ConnectionInfoService {
             User user = new User(
                     Randomizer.getRandomNumber(10000, 99999),
                     Randomizer.getRandomSrtring(10),
-                    Randomizer.getRandomSrtring(12));
+                    Randomizer.getRandomSrtring(12), Gender.FEMALE);
 
             ConnectionInfo connectionInfo = new ConnectionInfo(sessionId, userIp, time, user);
             connections.add(connectionInfo);
@@ -53,7 +54,7 @@ public class ConnectionInfoService {
         for (String line : lines){
             String[] words = line.split("");
 
-            User user = new User(Integer.valueOf(words[5]), words[3], words[4]);
+            User user = new User(Integer.valueOf(words[5]), words[3], words[4], Gender.FEMALE);
 
             ConnectionInfo connectionInfo = new ConnectionInfo(Integer.valueOf(words[1]),words[2],Long.valueOf(words[0]),user);
 

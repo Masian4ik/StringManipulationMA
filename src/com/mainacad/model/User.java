@@ -1,10 +1,28 @@
 package com.mainacad.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
+
 
     private Integer id;
     private String login;
     private String password;
+    private Gender gender;
+
+    public User() {
+
+    }
+
+    public String getGender() {
+        return gender.getValue();
+
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
 
     public Integer getId() {
         return id;
@@ -30,12 +48,12 @@ public class User {
         this.password = password;
     }
 
-    public User(Integer id, String login, String password) {
+    public User(Integer id, String login, String password, Gender gender) {
         this.id = id;
         this.login = login;
         this.password = password;
-    }
+        this.gender = gender;
 
-    public User() {
     }
 }
+

@@ -1,12 +1,14 @@
 package com.mainacad;
 
 import com.mainacad.model.ConnectionInfo;
+import com.mainacad.model.Gender;
+import com.mainacad.model.User;
 import com.mainacad.service.ConnectionInfoService;
-import com.mainacad.util.Randomizer;
-
-import java.util.Date;
-import java.util.Queue;
+import com.mainacad.service.FileManagerService;
 import java.util.logging.Logger;
+import com.mainacad.*;
+
+import javax.naming.MalformedLinkException;
 
 public class AppRunner {
 
@@ -14,26 +16,43 @@ public class AppRunner {
 
     public static void main(String[] args) {
 
-        Queue<ConnectionInfo> connections = ConnectionInfoService.generateConnectionQueue(5);
+        //      ConnectionInfo connectionInfo = ConnectionInfoService.generateConnectionInfoQueue(1).peek();
+//
+        ////      FileManagerService.writeText("connections.txt", connectionInfo.toString(), true);
+//
+        //      logger.info("\n" + FileManagerService.readText("connections.txt" ));
 
-        logger.info(String.format("My system generated %d connections. %s", connections.size(), "It's cool!"));
+        User user = new User();
+        user.setGender(Gender.MALE);
 
-        String connectionsAsText = ConnectionInfoService.getConnectionsAsText(connections);
-        logger.info("\n" + connectionsAsText);
-
-
-
-
-
-
-
-
-
-
-
-        }
-
-
+        logger.info(String.valueOf(user.getGender()));
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

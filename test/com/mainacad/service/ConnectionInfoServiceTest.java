@@ -17,13 +17,14 @@ class ConnectionInfoServiceTest {
 
     @Test
     void getConnectionsAsText() {
-        Queue<ConnectionInfo> connections = ConnectionInfoService.generateConnectionQueue(5);
+        Queue<ConnectionInfo> connections = ConnectionInfoService.generateConnectionInfoQueue(5);
         String result = ConnectionInfoService.getConnectionsAsText(Arrays.asList(connections.peek()));
         logger.info(result);
 
         assertEquals(3, StringUtils.countMatches(result, "."));
 
-  //      assertTrue(result.matches(".+( \\d{3}\\.\\d{3}\\.\\d{3}\\.\\d{3} )*"));
+
+
 
     }
 }
